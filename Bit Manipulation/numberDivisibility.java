@@ -1,3 +1,4 @@
+// Checking the divisibility of a binary number by 3, using bit manipulation.
 
 public class numberDivisibility{
 	
