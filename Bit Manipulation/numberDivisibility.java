@@ -41,4 +41,3 @@ System.out.println("Is divisible by three: " +isDivisibleBy3());
 inputScanner.close();
 }	
 }
-
