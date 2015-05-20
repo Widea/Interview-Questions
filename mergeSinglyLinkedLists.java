@@ -5,26 +5,27 @@ public class mergingSinglyLinkedLists{
 	public class node
 	{
 		Integer data;
-		node next;
-	
+		node next;	
+		
+		// parameterized constructor
 		public node(int input)
 		{
 			data = input;
 			next = null;
-		}
-
-		
+		}		
 	}
 	
+	// parameterized constructor
 	public mergingSinglyLinkedLists(int val)
 	{
 		head = new node(val);
 	}
 	
+	//default constructor
 	public mergingSinglyLinkedLists() {
-	
 	}
 
+	// add a new node to the end of the linked list
 	public void addToList(int val)
 	{
 		if(head == null)
@@ -35,6 +36,7 @@ public class mergingSinglyLinkedLists{
 		
 		node temp = head;
 		node valNode = new node(val);
+		
 		while(temp.next != null)
 		{
 			temp = temp.next;
@@ -43,6 +45,7 @@ public class mergingSinglyLinkedLists{
 		temp.next = valNode;
 	}
 	
+	// print the list as a string. 
 	@Override
 	public String toString()
 	{
@@ -60,7 +63,8 @@ public class mergingSinglyLinkedLists{
 		return outputString.toString();
 	} 
 	
-	// creates a new list
+	// creates a new list and merges the given two lists into it.
+	// Returns the new string
 	public static mergingSinglyLinkedLists mergeIncreasingOrder1(mergingSinglyLinkedLists l1, mergingSinglyLinkedLists l2)
 	{
 		if(l1.head == null && l2.head == null) return null;
@@ -109,7 +113,8 @@ public class mergingSinglyLinkedLists{
 	}
 	
 	
-	// does not create a new list
+	// does not create a new list, and merges the second list into the first one in ascending order.
+	// returns the head of the merged list
 	public static node mergeIncreasingOrder2(mergingSinglyLinkedLists l1, mergingSinglyLinkedLists l2)
 		{
 			if(l1.head == null && l2.head == null) return null;
@@ -143,7 +148,9 @@ public class mergingSinglyLinkedLists{
 			}
 			
 	
-	
+	// main function
+	//defines two lists
+	// calls both the merging function for merging the two list in ascending order
 	public static void main(String[] args)
 	{
 		mergingSinglyLinkedLists list1 = new mergingSinglyLinkedLists(1);
