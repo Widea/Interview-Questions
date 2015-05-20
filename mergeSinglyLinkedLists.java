@@ -12,6 +12,10 @@ public class mergingSinglyLinkedLists{
 		{
 			data = input;
 			next = null;
+		}
+
+		public node() {
+			// TODO Auto-generated constructor stub
 		}		
 	}
 	
@@ -67,8 +71,18 @@ public class mergingSinglyLinkedLists{
 	// Returns the new string
 	public static mergingSinglyLinkedLists mergeIncreasingOrder1(mergingSinglyLinkedLists l1, mergingSinglyLinkedLists l2)
 	{
-		if(l1.head == null && l2.head == null) return null;
-		if (l2 == null) return l1;
+		if(l1.head == null && l2.head == null) 
+		{
+			return null;
+		}
+		if (l2.head == null) 
+		{
+			return l1;
+		}
+		if(l1.head == null)
+		{
+			return l2;
+		}
 		
 		mergingSinglyLinkedLists newList = new mergingSinglyLinkedLists();
 		
@@ -83,7 +97,7 @@ public class mergingSinglyLinkedLists{
 			{
 				newList.addToList(l2i.data);
 				l2i = l2i.next;
-			}	
+			}
 			break;
 			}
 			
@@ -98,15 +112,15 @@ public class mergingSinglyLinkedLists{
 			}
 			
 			if(l1i.data <= l2i.data )
-				{
+			{
 				newList.addToList(l1i.data);
 				l1i = l1i.next;
-				}
+			}
 			else
-				{
+			{
 				newList.addToList(l2i.data);
 				l2i = l2i.next;
-				}
+			}
 		}
 		
 		return newList;
@@ -115,48 +129,62 @@ public class mergingSinglyLinkedLists{
 	
 	// does not create a new list, and merges the second list into the first one in ascending order.
 	// returns the head of the merged list
-	public static node mergeIncreasingOrder2(mergingSinglyLinkedLists l1, mergingSinglyLinkedLists l2)
+	public static mergingSinglyLinkedLists mergeIncreasingOrder2(mergingSinglyLinkedLists l1, mergingSinglyLinkedLists l2)
+	{
+		node l1i = l1.head;	
+		node l2i = l2.head;
+		
+		if(l1i == null && l2i == null) 
 		{
-			if(l1.head == null && l2.head == null) return null;
-			if (l2.head == null) return l1.head;
-			if(l1.head == null) return l2.head;
-			node temp;
+			return null;
+		}
+		if (l2i == null) 
+		{
+			return l1;
+		}
+		if(l1i == null)
+		{
+			return l2;
+		}
+
+		if(l1i.data > l2i.data)
+		{
+			node tmp = l1i;
+			l2i = l1i;
+			l1i = tmp;
+		}
 			
-			if(l1.head.data <= l2.head.data)
-			{
-				temp = l1.head;
-			}
-			else
-			{
-				temp = l2.head;
-				l2.head = l1.head;
-				l1.head = temp;
-			}
-			
-			
-			while(l1.head.next != null && l2.head != null) {
-			    if (l1.head.next.data <= l2.head.data) {
-			      l1.head = l1.head.next;
-			    } else {
-			      node tmp = l1.head.next;
-			      l1.head.next = l2.head;
-			      l2.head = tmp;
-			    }
-			  } 
-			  if (l1.head.next == null) l1.head.next = l2.head;
-			  return temp;
-			}
+		while(l1i.next != null && l2i != null) 
+		{
+		    if (l1i.next.data <= l2i.data) 
+		    {
+		      l1i = l1i.next;
+		    } 
+		    else 
+		    {
+		      node tmp = l1i.next;
+	   	      l1i.next = l2i;
+	   	      l2i = tmp;
+		    }
+	     } 
+		 
+		if (l1i.next == null) 
+		{	
+			l1i.next = l2i;
+		}
+		return l1;
+	}
 			
 	
 	// main function
 	//defines two lists
-	// calls both the merging function for merging the two list in ascending order
+	// calls both the merging functions for merging the two list in ascending order
 	public static void main(String[] args)
 	{
-		mergingSinglyLinkedLists list1 = new mergingSinglyLinkedLists(1);
-		list1.addToList(2);
+		mergingSinglyLinkedLists list1 = new mergingSinglyLinkedLists(3);
 		list1.addToList(7);
-		list1.addToList(9);list1.addToList(19);
+		list1.addToList(9);
+		list1.addToList(15);list1.addToList(51);
 		mergingSinglyLinkedLists list2 = new mergingSinglyLinkedLists(5);
 		list2.addToList(7);
 		list2.addToList(8);
@@ -165,6 +193,6 @@ public class mergingSinglyLinkedLists{
 		System.out.println("list1: " +list1.toString());
 		System.out.println("list2: " +list2.toString());
 		System.out.println("Merged list in increasing order(creating a new list): " +mergeIncreasingOrder1(list1, list2).toString());
-		System.out.println("Merged list in increasing order(without creating a new list): " +mergeIncreasingOrder1(list1, list2).toString());
+		System.out.println("Merged list in increasing order(without creating a new list): " +mergeIncreasingOrder2(list1, list2).toString());
 	}
 }
