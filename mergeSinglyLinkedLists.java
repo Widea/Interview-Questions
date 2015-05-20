@@ -150,8 +150,8 @@ public class mergingSinglyLinkedLists{
 		if(l1i.data > l2i.data)
 		{
 			node tmp = l1i;
-			l2i = l1i;
-			l1i = tmp;
+			l1i = l2i;
+			l2i = tmp;
 		}
 			
 		while(l1i.next != null && l2i != null) 
@@ -172,6 +172,10 @@ public class mergingSinglyLinkedLists{
 		{	
 			l1i.next = l2i;
 		}
+		
+		if(l1.head.data > l2.head.data)
+		return l2;
+		else 
 		return l1;
 	}
 			
@@ -185,7 +189,7 @@ public class mergingSinglyLinkedLists{
 		list1.addToList(7);
 		list1.addToList(9);
 		list1.addToList(15);list1.addToList(51);
-		mergingSinglyLinkedLists list2 = new mergingSinglyLinkedLists(5);
+		mergingSinglyLinkedLists list2 = new mergingSinglyLinkedLists(6);
 		list2.addToList(7);
 		list2.addToList(8);
 		list2.addToList(9);
@@ -193,6 +197,7 @@ public class mergingSinglyLinkedLists{
 		System.out.println("list1: " +list1.toString());
 		System.out.println("list2: " +list2.toString());
 		System.out.println("Merged list in increasing order(creating a new list): " +mergeIncreasingOrder1(list1, list2).toString());
+		
 		System.out.println("Merged list in increasing order(without creating a new list): " +mergeIncreasingOrder2(list1, list2).toString());
 	}
 }
