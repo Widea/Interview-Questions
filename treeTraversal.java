@@ -1,9 +1,8 @@
 // program to implement a binary serach tree.
 // includes:
 // 1. adding nodes to the tree (displays message when duplicate node is input)
-// 2. tree traversals (in-order, pre-order, post-order)
-// 3. object search (BFS, DFS)
-// 4. converts tree toString, in-order format
+// 2. tree traversals (in-order, pre-order, post-order, level-order)
+// 3. converts tree toString, in-order format
 public class treeTraversal{
 	
 	node root;
@@ -104,9 +103,47 @@ public class treeTraversal{
 		 return "[" + toString(start.left) + "," + start.data + "," + toString(start.right) + "]";
 	}
 	
-	public static void main(String[] args)
+	// function to implement pre-order traversal
+	public void preOrder(node start)
+	{
+		if (start != null) 
+		{		 
+			System.out.println(start.data);
+			preOrder(start.left);
+			preOrder(start.right);
+		}
+	}
+	
+	// function to implement in-order traversal
+	public void inOrder(node start)
+	{
+		if (start != null) 
+		{
+			inOrder(start.left);
+			System.out.println(start.data);
+			inOrder(start.right);
+		}
+	}
+	
+	// function to implement post-order traversal
+	public void postOrder(node start)
+	{
+		if (start != null) 
+		{
+			postOrder(start.left);
+			postOrder(start.right);
+			System.out.println(start.data);
+		}
+	}
+	
+	// function to implement level-order traversal
+	public void levelOrder(node start)
 	{
 		
+	}
+	
+	public static void main(String[] args)
+	{
 		treeTraversal bTree = new treeTraversal(5);
 		bTree.addToTree(1);
 		bTree.addToTree(4);
@@ -115,9 +152,8 @@ public class treeTraversal{
 		bTree.addToTree(7);
 		
 		System.out.println(bTree.toString());
-		
-		
+		System.out.println("***Pre-Order Traversal***"); bTree.preOrder(bTree.root);
+		System.out.println("***In-Order Traversal***"); bTree.inOrder(bTree.root);
+		System.out.println("***Post-Order Traversal***"); bTree.postOrder(bTree.root);
 	}
-	
-	
 }
