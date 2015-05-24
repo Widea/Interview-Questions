@@ -136,11 +136,31 @@ public class treeTraversal{
 		}
 	}
 	
-	// function to implement level-order traversal
-	public void levelOrder(node start)
-	{
-		
-	}
+    // function to implement level-order traversal
+    public void levelOrder(node start)
+    {
+        Queue<node> nodequeue = new LinkedList<node>();
+        
+        if(start == null)
+            return;
+        
+        nodequeue.add(start);
+        while(!nodequeue.isEmpty())
+        {
+            node temp = nodequeue.remove();
+            System.out.println(temp.data);
+            
+            if(temp.left != null)
+            {
+                nodequeue.add(temp.left);
+            }
+            
+            if(temp.right != null)
+            {
+                nodequeue.add(temp.right);
+            }
+        }		
+    }
 	
 	public static void main(String[] args)
 	{
