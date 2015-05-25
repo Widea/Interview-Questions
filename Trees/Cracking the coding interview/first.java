@@ -2,6 +2,8 @@
 // A balanced tree is defined to be a tree such that the heights of the two subtrees of any node never differ by more than one.
 
 public class first{
+	
+	// tree node
 	public static class node
 	{
 		Object data;
@@ -44,9 +46,7 @@ public class first{
 			
 	}
 	
-	
 	// method II (while calculating the height itself check if there in an unbalanced node and return false if so.)
-	
 	public static int height2(node start)
 	{
 		// base case
@@ -60,6 +60,7 @@ public class first{
 			return -1;
 		}
 		
+		// check right tree
 		int right = height2(start.right);
 		if(right == -1)
 		{
@@ -116,7 +117,6 @@ public class first{
 		node testNode = new node(5);
 		testNode.left = firstLeft;
 		firstLeft.left = second1Left;
-		
 		
 		System.out.println("Method 1 : Positive Test : " +isBalanced1(head));
 		System.out.println("Method 1 : Negative Test : " +isBalanced1(testNode));
