@@ -1,6 +1,6 @@
-import java.util.Scanner;
+// Find the number of trailing zeros in the factorial of the given input
 
-// Program to find the number of trailing zeros in the factorial of the given input.
+import java.util.Scanner;
 
 public class trailingZeros
 {
