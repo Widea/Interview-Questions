@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 // Refernce: https://sites.google.com/site/spaceofjameschen/home/String/match-words -- google
 
+// Assumption: No two * can be together!
 public class matchWords
 {
 	public static boolean Matches(String text, String pattern)
@@ -56,7 +57,7 @@ public class matchWords
 		System.out.print("Enter the pattern string; ");
 		String pattern = in.nextLine();
 		System.out.println();
-		System.out.println(Matches(text, pattern));
+		System.out.println("The pattern matches the entered text? " +Matches(text, pattern));
 		in.close();
 	}	
 }
