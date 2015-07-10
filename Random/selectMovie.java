@@ -8,7 +8,6 @@ the width of the letter grid, and computes the key presses that
 will enter that string on the DVR grid. The output should be a 
 string, with "u", "d", "l", "r", and "!" corresponding to up, 
 down, left, right, and select. 
-
 For example, with a grid of width 5, 
 a b c d e 
 f g h i j 
@@ -26,18 +25,18 @@ public class selectMovie
 	
 	static void getName(int w, String name)
 	{
-		//StringBuffer out = new StringBuffer("");
+		StringBuffer out = new StringBuffer("");
 		//char[][]
 		for(int i = 0; i < name.length() ; i++)
 		{
 			char target = Character.toLowerCase(name.charAt(i));			
-			int target_i = target - 97 / w;
-			int target_j = target - 97 % w;
+			int target_i = (target - 'a') / w;
+			int target_j = (target - 'a') % w;
 			
-			System.out.println(getPath(target_i,target_j));
+			out.append(getPath(target_i,target_j));
 		}
 		
-		
+		System.out.println(out.toString());
 	}
 	
 	
