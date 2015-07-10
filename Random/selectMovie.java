@@ -63,13 +63,13 @@ public class selectMovie
 				
 				if(b > jth)
 					{out.append("l");
-					a--;
+					b--;
 					}
 				
-				if(a < ith)
+				if(b < jth)
 				{
 					out.append("r");
-					a++;
+					b++;
 				}
 					
 			}
