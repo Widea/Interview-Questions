@@ -13,18 +13,14 @@ public class HashMap {
     }
 
     public void put(int key, int value) {
-    	
-    	if(elemCount == (int)(loadFactor*table.length) )
-    	{
-    		resize();
+    	if (elemCount == (int)(loadFactor*table.length)) {
+    	    resize();
     	}
-    	
-        int index = hashCodeNew(key);
+        int index = getHash(key);
         HashEntry hashEntry = new HashEntry(key, value);
         if (table[index] == null) {
             table[index] = hashEntry;
             elemCount++;
-          //  System.out.println(elemCount + " " + table.length);
         } else {
             HashEntry runner = table[index];
             while (runner.next != null) {
@@ -41,30 +37,24 @@ public class HashMap {
                 } else {
                     runner.next = hashEntry;
                     elemCount++;
-                 //   System.out.println(elemCount + " " + table.length);
                 }
             }
         }
     }
     
-    public void resize()
-    {
-    	System.out.println("Array is being resized! Reached load factor amount of " +elemCount +" elements.");
-    	int newLength = table.length * 2;
+    public void resize() {
+    	System.out.println("Array is being resized! Reached load factor of " +elemCount +" elements...");    	int newLength = table.length * 2;
+    	
     	HashEntry[] newTable = new HashEntry[newLength];
-    	for(int i = 0; i < table.length ; i++)
-    	{
+    	for(int i = 0; i < table.length ; i++) {
     		newTable[i] = table[i];
     	}
     	
     	table = newTable;
-    	
-    	System.out.println("Table's new length: " +table.length);
-    	
     }
 
     public int get(int key) {
-        int index = hashCodeNew(key);
+        int index = getHash(key);
         if (table[index] == null) {
             return -1;
         } else {
@@ -81,7 +71,7 @@ public class HashMap {
         }
     }
 
-    public int hashCodeNew(int h) {
+    public int getHash(int h) {
         h ^= (h >>> 20) ^ (h >>> 12);
         int hashCode = h ^ (h >>> 7) ^ (h >>> 4);
         return hashCode % table.length;
@@ -101,7 +91,7 @@ class HashEntry {
 
 public static void main(String[] args) {
 	HashMap hashMap = new HashMap();
-    hashMap.put(21, 10);
+    hashMap.put(10, 20);
     hashMap.put(20, 11);
     hashMap.put(21, 1);
     hashMap.put(20, 10);
