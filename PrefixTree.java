@@ -1,10 +1,8 @@
 // refernce: http://pathakalgo.blogspot.com/2012/11/trie-data-structure-implementation-in.html
 // Program to implement a trie data structure
 
-public class PrefixTree
-{
-    static TrieNode createTree()
-    {
+public class PrefixTree {
+    static TrieNode createTree() {
         return(new TrieNode('\0', false));
     }
     
@@ -66,6 +64,25 @@ public class PrefixTree
         }
     }
     
+    // The trie node class
+    // letter denotes the main character of the node
+    // links denote the node's branches(out)
+    // fullWord denotes if the node is a complete node or just a prefix.
+    static class TrieNode
+    {
+        char letter;
+        TrieNode[] links;
+        boolean fullWord;
+        
+        TrieNode(char letter, boolean fullWord)
+        {
+            this.letter = letter;
+            links = new TrieNode[26];
+            this.fullWord = fullWord;
+        }
+    }
+    
+   
     public static void main(String[] args)
     {
         TrieNode tree = createTree();
@@ -86,19 +103,5 @@ public class PrefixTree
         {
             System.out.println("The word was NOT found");
         }
-    }
-}
-
-class TrieNode
-{
-    char letter;
-    TrieNode[] links;
-    boolean fullWord;
-    
-    TrieNode(char letter, boolean fullWord)
-    {
-        this.letter = letter;
-        links = new TrieNode[26];
-        this.fullWord = fullWord;
     }
 }
