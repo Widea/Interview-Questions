@@ -2,6 +2,7 @@
 // implements addWord, searchWord, printTree methods. 
 
 public class trie {
+	
 	trieNode root;
 	
 	public trie(){
@@ -38,6 +39,28 @@ public class trie {
         return false;
 	}
 	
+	public void printTrie() {
+		printTrie(root, 0, new char[50]);
+	}
+	
+	static void printTrie(trieNode root, int level, char[] branch) {
+        if (root == null)
+            return;
+        
+        for (int i = 0; i < root.links.length; i++)
+        {
+            branch[level] = root.letter;
+            printTrie(root.links[i], level+1, branch);    
+        }
+        
+        if (root.isWord)
+        {
+            for (int j = 1; j <= level; j++)
+                System.out.print(branch[j]);
+            System.out.println();
+        }
+    }
+	
 	static class trieNode {
 		char letter;
 		trieNode[] links;
@@ -63,9 +86,9 @@ public class trie {
 	        String[] words = {"an", "ant", "all", "allot", "alloy", "aloe", "are", "ate", "be"};
 	        for (int i = 0; i < words.length; i++)
 	            tree.insertWord(words[i]);
-	        
-	    //    char[] branch = new char[50];
-	    //    printTree(tree, 0, branch);
+	    
+	        System.out.println("The words in the current trie are: ");
+	        tree.printTrie();
 	        
 	        String searchWord = "all";
 	        if (tree.isPresent(searchWord))
@@ -77,6 +100,4 @@ public class trie {
 	            System.out.println("The word was NOT found");
 	        }
 	    }
-	
-	
 }
