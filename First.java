@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 // check if a string has all unique characters
 
-class UniqueString{
+class First{
 	static boolean isUnique(String input)
 	{	
 		HashMap<Character, Integer> map = new HashMap<Character,Integer>();
