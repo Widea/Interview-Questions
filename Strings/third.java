@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 // Check if one string is the permutation of the other
 
-class StringPermute{
+class third{
 	
 static boolean isPermutation(String in1, String in2)
 {
