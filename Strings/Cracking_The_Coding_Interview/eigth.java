@@ -12,9 +12,9 @@ import java.util.Scanner;
 public class eigth {
 	
 	public static boolean isRotation(String actual, String rotation) {
-	if(s1 && s2 == null)
+	if(actual == null && rotation == null)
             return true;
-        if(s1 || s2 == null)
+        if(actual.length() != rotation.length())
             return false;
         String temp = rotation + rotation;
 		if(isSubstring(actual, temp)) {
