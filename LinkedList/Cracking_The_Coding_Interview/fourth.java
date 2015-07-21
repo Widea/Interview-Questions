@@ -68,10 +68,8 @@ public class fourth {
 				
 				if(head.data < val) {
 					LL1.addToList(head);
-					System.out.println("reached here <");
 				} else if(head.data > val) {
 					LL2.addToList(head);
-					System.out.println("reached here >");
 				} else {
 					if(LL2.head == null) {
 						 LL2.head = head;
@@ -79,7 +77,6 @@ public class fourth {
 					else {
 					head.next = LL2.head;
 					LL2.head = head;
-					System.out.println(LL2.toString());
 					}
 				}
 				head = temp;
