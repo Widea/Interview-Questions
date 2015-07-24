@@ -18,6 +18,32 @@ public class sixth {
 			next = null;
 		}			
 	}
+		
+	public static node getBeginning(node head) {
+		if(head == null)
+			return null;
+		node fast = head;
+		node slow = fast;
+		
+		while(fast != null && fast.next != null) {
+			fast = fast.next.next;
+			slow = slow.next;	
+			// This is where the two nodes meet
+			if(fast == slow) 
+				break;
+		}
+	
+		if(fast == null || fast.next == null)
+			return null;
+		
+		slow = head;
+		while(slow != fast) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+
+		return fast; // or return slow
+	}
 	
 	public static void main(String[] args) {
 		node a = new node(1);
@@ -36,7 +62,8 @@ public class sixth {
 		e.next = f;
 		f.next = g;
 		g.next = h;
-		h.next = c;
-			
+		h.next = d;			
+		
+		System.out.println("The meeting point has data: " +getBeginning(a).data);
 	}
 }
