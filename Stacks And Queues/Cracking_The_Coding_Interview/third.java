@@ -35,7 +35,7 @@ public class third {
 		}
 		
 		public boolean isFull(Stack in){
-			return (in.size() <= capacity);
+			return (in.size() >= capacity);
 		}
 		
 		public void push(int data) {
@@ -43,10 +43,49 @@ public class third {
 			if( end != null && !isFull(end) ) {
 				end.push(data);
 			} else {
-				Stack in = new Stack<Integer>();
+				Stack in = new Stack();
 				in.push(data);
 				stacks.add(in);
 			}
+		}
+		
+		public boolean isEmpty() {
+			if(getLastStack() == null && stacks.size() == 0)
+				return true;
+			return false;
+		}
+		
+		public Integer peek() {
+			if(stacks.isEmpty())
+				return null;
+			return stacks.get(stacks.size() - 1).peek();
+		}
+		
+		public Integer pop() {
+			if(stacks.isEmpty())
+				return null;
+			else {
+				Stack<Integer> end = getLastStack();
+				int out = end.pop();
+				if (end.size() == 0) 	
+					stacks.remove(stacks.size() - 1);
+				return out;
+			}
+		}
+		
+		public static void main(String[] args) {
+			SetOfStacks set = new SetOfStacks(2);
+			set.push(1);
+			set.push(2);
+			set.push(3);
+			set.push(4);
+			set.push(5);
+			
+			System.out.println("Current stack peek: " +set.peek());
+			System.out.println("Is stack empty? "+set.isEmpty());
+			System.out.println("Popping stack top: " +set.pop());
+			System.out.println("Current stack peek: " +set.peek());
+		
 		}
 	}
 }
