@@ -1,72 +1,62 @@
-// program to create a binary search tree with minimal height
-// given a sorted (increasing order) array with unique integer elements
+import java.util.Scanner;
 
-public class third{
-	
-	// tree node class
-	public static class node
-	{
+/* Cracking the coding interview
+ * Chapter : Trees and Graphs
+ * Question: 4.3
+ * Given a sorted (increasing order) array with unique integer elements, 
+ * write an algorithm to create a binary search tree with minimal height.
+ * Author : Viveka Aggarwal
+ */
+
+public class third {
+	static class node {
+		int data;
 		node left;
 		node right;
-		int data;
-	
-		public node(int input)
-		{
-			data = input;
+		
+		node(int data) {
+			this.data = data;
+			left = right = null;
 		}
 	}
 	
-	// create a BST from the given array
-	public static node createBST(int[] inputArray)
-	{
-		return createTree(inputArray, 0, inputArray.length - 1);
+	static node createBST(int[] input) {
+		return createBST(input, 0 , input.length - 1);
 	}
 	
-	// helper function 
-	// parameters : array, beginning and ending index of array in consideration
-	// returns: the root node of the main array
-	public static node createTree(int[] A, int start, int end)
-	{
-		// base case
+	static node createBST(int[] input, int start, int end) {
 		if(end < start)
 			return null;
 		
-		// point of partition
-		int mid = (start + end)/ 2;
+		int mid = (start + end) / 2;
 		
-		// create new node to be added
-		node main = new node(A[mid]);
+		node output = new node(input[mid]);
+		output.left = createBST(input, start, mid - 1);
+		output.right = createBST(input, mid+1, end);
 		
-		// recursively create the left and right branch nodes with the 
-		// first half and second half of the array minus the A[mid] element.
-		main.left = createTree(A, start, mid-1);
-		main.right = createTree(A,mid+1,end);
-		
-		// return the main root node
-		return main;
+		return output;
 	}
 	
-	// converts the tree to string format
-	// prints in in-order traversal format 
-	static String toString(node start)
-	{
-		if(start == null)
-		 return "";	
-	
-		return (" " + toString(start.left) + " " + start.data + " " + toString(start.right)+ " ");
+	static int getHeight(node root) {
+		if(root == null)
+			return 0;
+		
+		return 1 + Math.min(getHeight(root.left), getHeight(root.right));
 	}
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] a) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter array length: ");
+		int length = in.nextInt();
+		int[] inputArr = new int[length];
+		System.out.println("Enter array values: ");
+		for(int i = 0 ; i < length ; i++)
+			inputArr[i] = in.nextInt();
 		
-		int[] testArray = {19, 22, 43, 56, 76, 89};
+		node root = createBST(inputArr);
+		System.out.println(getHeight(root));
 		
-		node root = createBST(testArray);
-		
-		System.out.println(toString(root));
-			
+		in.close();
 		
 	}
-
-
 }
