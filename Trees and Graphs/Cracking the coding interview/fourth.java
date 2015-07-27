@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 /* Cracking the coding interview
  * Chapter : Trees and Graphs
  * Question: 4.4
@@ -5,71 +10,50 @@
  * each depth (e.g., if you have a tree with depth D, you'll have D linked lists).
  * Author : Viveka Aggarwal
  */
- 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 
 public class fourth {
+	static class node {
+		int data;
+		node left;
+		node right;
+		
+		node(int data) {
+			this.data = data;
+			left = right = null;
+		}
+	}
+		static void createLinkedLists(node root, ArrayList<LinkedList<node>> list, int level) {
+			if(root == null)
+				return;
+			
+			if(level == list.size()) {
+				list.add(new LinkedList<node>());
+			
+			} 
 
-	public static class TreeNode
-	{
-		TreeNode left;
-		TreeNode right;
-		Object data;
-	
-		TreeNode(int inputData)
-		{
-			data = inputData;
-		}
-	}
-	
-	public static ArrayList<LinkedList<TreeNode>> getList(TreeNode root)
-	{
-		if(root == null)
-			return null;
-		
-		ArrayList<LinkedList<TreeNode>> list = new ArrayList<LinkedList<TreeNode>> () ;
-		getLinkedList(root, 0, list);		
-		return list;
-		
-	}
-	
-	public static void getLinkedList(TreeNode node, int level, ArrayList<LinkedList<TreeNode>> list ) 
-	{	
-		if(node == null)
-		{
-			return;
+			list.get(level).add(root);
+			
+			createLinkedLists(root.left , list, level + 1);
+			createLinkedLists(root.right , list, level + 1);
 		}
 		
-		LinkedList<TreeNode> newList = new LinkedList<TreeNode>();
-		
-		if(list.size() == level)
-		{
-			list.add(newList);
-		}		
-		else
-		{
-			newList = list.get(level);
+		static ArrayList<LinkedList<node>> createLinkedLists(node root) {
+			ArrayList<LinkedList<node>> list = new ArrayList<LinkedList<node>>();
+			createLinkedLists(root, list, 0);
+			return list;
 		}
 		
-		newList.add(node);
-		
-		getLinkedList(node.left , level + 1, list);
-		getLinkedList(node.right, level + 1, list);
-	}
 	
-	public static void main(String[] args)
-	{
-		TreeNode root = new TreeNode(7);
-		TreeNode firstLeft = new TreeNode(5);
-		TreeNode firstRight = new TreeNode(9);
-		TreeNode second1Left = new TreeNode(3);
-		TreeNode second1Right = new TreeNode(6);
-		TreeNode second2Left = new TreeNode(8);
-		TreeNode second2Right = new TreeNode(11);
-		TreeNode thirdLeft = new TreeNode(2);
-		TreeNode thirdRight = new TreeNode(4);
+	public static void main(String[] args) {
+		node root = new node(7);
+		node firstLeft = new node(5);
+		node firstRight = new node(9);
+		node second1Left = new node(3);
+		node second1Right = new node(6);
+		node second2Left = new node(8);
+		node second2Right = new node(11);
+		node thirdLeft = new node(2);
+		node thirdRight = new node(4);
 
 		// Tree creation
 		root.left = firstLeft;
@@ -80,21 +64,17 @@ public class fourth {
 		firstRight.right = second2Right;
 		second1Left.left = thirdLeft;
 		second1Left.right = thirdRight;
-		second2Right.right = new TreeNode(12);
+		second2Right.right = new node(12);
 		
-		ArrayList<LinkedList<TreeNode>> result = getList(root);
-		
-		int depth = 0;
-		for(LinkedList<TreeNode> entry : result) 
-		{
-			Iterator<TreeNode> i = entry.listIterator();
-			System.out.print("Linked list at depth " + depth + ":");
-			while(i.hasNext())
-			{
-				System.out.print(" " + ((TreeNode)i.next()).data);
+		ArrayList<LinkedList<node>> output= createLinkedLists(root);
+		int c = 0;
+		for(LinkedList<node> l : output) {
+			Iterator i = l.listIterator();
+			System.out.println("***** List at depth "+(c++)+" ******");
+			while(i.hasNext()) {
+				System.out.print(((node)i.next()).data + "  ");
 			}
 			System.out.println();
-			depth++;
-		}		
+		}	
 	}
 }
