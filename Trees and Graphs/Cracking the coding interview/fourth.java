@@ -1,3 +1,11 @@
+/* Cracking the coding interview
+ * Chapter : Trees and Graphs
+ * Question: 4.4
+ * Given a binary tree, design an algorithm which creates a linked list of all the nodes at
+ * each depth (e.g., if you have a tree with depth D, you'll have D linked lists).
+ * Author : Viveka Aggarwal
+ */
+ 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
