@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 /* Cracking the coding interview
  * Chapter : Trees and Graphs
  * Question: 4.3
@@ -57,6 +56,5 @@ public class third {
 		System.out.println(getHeight(root));
 		
 		in.close();
-		
 	}
 }
