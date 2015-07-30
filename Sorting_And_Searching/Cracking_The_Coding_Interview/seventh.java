@@ -83,6 +83,7 @@ public class seventh {
 	}
 	
 	public static ArrayList<HtWt> longestSequence(ArrayList<HtWt> list) {
+		Collections.sort(list);
 		ArrayList<HtWt>[] solutions = new ArrayList[list.size()];
 		longestSubsequence(list, solutions, 0);
 		ArrayList<HtWt> best_sequence = null;
@@ -92,11 +93,6 @@ public class seventh {
 		}
 		
 		return best_sequence;
-	}
-	
-	public static ArrayList<HtWt> getIncreasingSequence(ArrayList<HtWt> list) {
-		Collections.sort(list);
-		return longestSequence(list);
 	}
 	
 	public static void main(String[] args) {
@@ -128,15 +124,14 @@ public class seventh {
 		
 		item = new HtWt(45, 63);
 		items.add(item);
-		
-		
+				
 		item = new HtWt(45, 78);
 		items.add(item);
 		
-		ArrayList<HtWt> solution = getIncreasingSequence(items);
-		
+		ArrayList<HtWt> output = longestSequence(items);
+
 		System.out.println("Printing the largest sequence . . .");
-		for(HtWt i : solution) {
+		for(HtWt i : output) {
 			System.out.println(i.toString());
 		}
 	}
