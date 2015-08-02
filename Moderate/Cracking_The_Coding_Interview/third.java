@@ -2,7 +2,7 @@ package moderate;
 
 /*
  * Cracking the coding interview 
- * Chapter: Sorting and Searching
+ * Chapter: Moderate
  * Solution: 17.3
  * Write an algorithm which computes the number of trailing zeros in n factorial.
  * Author: Viveka Aggarwal
