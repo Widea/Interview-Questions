@@ -2,7 +2,7 @@ package moderate;
 
 /*
  * Cracking the coding interview 
- * Chapter: Sorting and Searching
+ * Chapter: Moderate
  * Solution: 17.1
  * Write a function to swap a number in place(that is, without temporary variables).
  * Author: Viveka Aggarwal
