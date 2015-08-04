@@ -2,7 +2,7 @@ package Hard;
 
 /*
  * Cracking the coding interview 
- * Chapter: Moderate
+ * Chapter: Hard
  * Solution: 18.1
  * Write a function that adds two numbers. You should not use + or any arithmetic operators.
  * Author: Viveka Aggarwal
