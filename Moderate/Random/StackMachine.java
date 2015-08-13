@@ -61,15 +61,21 @@ public class StackMachine {
 		for(int i = 0 ; i < input.length() ; i++) {
 			Character c = input.charAt(i);
 			if(c >= '0' && c <= '9') {
-				buffer.push(c - '0');
+				int x = c - '0';
+				buffer.push(x);
+				System.out.println("Pushed value "+x);
 			} else if(c.equals('+') || c.equals('*')) {
 				Integer a, b, res;
-				if(!buffer.isEmpty()) 
+				if(!buffer.isEmpty()) {
 					a = buffer.pop();
+					System.out.println("Popped "+a);
+				}
 				else 
 					return "Error - empty stack";
-				if(!buffer.isEmpty())
+				if(!buffer.isEmpty()) {
 					b = buffer.pop();
+					System.out.println("Popped "+b);
+				}
 				else 
 					return "Error - empty stack";
 				
@@ -78,17 +84,18 @@ public class StackMachine {
 				else
 					res = a * b;
 				if(res < 4096) {
+					System.out.println("Result: " +res);
 					buffer.push(res);
 				} else
 					return "Error - overflow";	
 			}
 		}
 		if(!buffer.isEmpty())
-			return String.valueOf(buffer.pop());
+			return String.valueOf("Final Result: " +buffer.pop());
 		else return "Error - empty stack";
 	}
 	
 	public static void main(String[] a) {
-		System.out.println(machine("13+62*7+*"));
+		System.out.println(machine("113+62*77+*"));
 	}
 }
