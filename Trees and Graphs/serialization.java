@@ -74,7 +74,7 @@ public class serialization {
 		
 		try
 	      {
-			     // Serialization of the tree
+		 // Serialization of the tree
 	         FileOutputStream fileOut =
 	         new FileOutputStream("/serialize.txt");
 	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
