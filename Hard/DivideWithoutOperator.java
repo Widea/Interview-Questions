@@ -6,8 +6,24 @@ Reference : Hemant : https://stackoverflow.com/questions/5386377/division-withou
 public class DivisionWithoutOperator {
 	
 	static int divide(int denom, int num) {
-		    int current = 1;
+		   
+			// Checking for possible edge cases
+			if(denom == 0)
+		    	return Integer.MAX_VALUE;
 		    
+		    if(denom < 0 && num < 0) {
+		    	denom = -denom;
+		    	num = -num;
+		    }
+		    	
+		    if(denom > num || denom < 0) 
+		    	return 0;
+		    
+		    if(denom == num)
+		    	return 1;
+
+		    int current = 1;
+
 		    // This step is required to find the biggest current number which can be
 		    // divided with the number safely.
 		    while (denom <= num) {
@@ -37,6 +53,6 @@ public class DivisionWithoutOperator {
 		System.out.println(divide(2,4));
 		System.out.println(divide(2,8));
 		System.out.println(divide(3,56));
-		System.out.println(divide(3,57));
+		System.out.println(divide(-3,-57));
 	}
 }
