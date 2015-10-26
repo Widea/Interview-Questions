@@ -14,20 +14,6 @@ class stringReverse{
 		return temp.toString();
 	}
 	
-	static String reverseStringInPlace(String input)
-	{
-		for(int i = 0, j = input.length(); i <= j; i++, j--)
-			{
-			 tempChar = input.charAt(i);
-			 input.replace(input.charAt(j), input.charAt(j));
-			 
-			}
-		StringBuffer temp = new StringBuffer("");
-		
-		return temp.toString(); */
-		return null;
-	}
-	
 	public static void main(String[] args){
 		String inputString;
 		Scanner in = new Scanner(System.in);
