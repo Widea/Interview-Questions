@@ -1,8 +1,8 @@
 # CrackingTheCodingInterview
 
 Solution for problems from the book cracking the coding interview
-=> All the solutions to the book are listed under respective data structures in a folder named as the book. 
+/n=> All the solutions to the book are listed under respective data structures in a folder named as the book. 
 
-=> Generally asked algorithm questions can be found under moderate-> random or hard folders. 
-=> Implementation for each data structure is available within its folder. 
+/n=> Generally asked algorithm questions can be found under moderate-> random or hard folders. 
+/n=> Implementation for each data structure is available within its folder. 
 
