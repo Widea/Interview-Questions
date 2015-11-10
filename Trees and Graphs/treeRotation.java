@@ -1,4 +1,4 @@
-// Program to rotate a given BST
+// Program to rotate a given BST, also to print the elements at any given level
 
 public class treeRotation {	
 	static class node {
@@ -44,6 +44,21 @@ public class treeRotation {
 		return start.data + " " +printTree(start.left) + " " + printTree(start.right);
 	}
 	
+	static void PrintLevelK(node start, int k) {
+		if(start == null) {
+			System.out.print("null ");
+			return;
+		}
+		
+		if(k == 0){
+			System.out.print(start.data + " ");
+			return;
+		}
+		
+		PrintLevelK(start.left, k-1);
+		PrintLevelK(start.right, k-1);			
+	}
+	
 	static node leftRotation(node start) {
 		node newRoot = start.right;
 		start.right = newRoot.left;
@@ -55,7 +70,6 @@ public class treeRotation {
 		node newRoot = start.left;
 		start.left = newRoot.right;
 		newRoot.right = start;
-		
 		return newRoot;
 	}
 	
@@ -71,9 +85,21 @@ public class treeRotation {
 		add(root, 4);
 		
 		System.out.println(printTree(root));
+		
+		PrintLevelK(root, 0);
+		System.out.println();
+		PrintLevelK(root, 1);
+		System.out.println();
+		PrintLevelK(root, 2);
+		System.out.println();
+		PrintLevelK(root, 3);
+		System.out.println(); 
+		
+		root = leftRotation(root);
+		System.out.println(printTree(root));
 		root = rightRotation(root);
 		System.out.println(printTree(root));
-		root = leftRotation(root);
+		root = rightRotation(root);
 		System.out.println(printTree(root));
 
 	}
