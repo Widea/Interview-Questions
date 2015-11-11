@@ -12,7 +12,7 @@ public class AngleBetweenHoursAndMinutes {
 		
 		// Hours hand with respect to '12': An hour hand covers 360 deg in 12 hours, or 720 minutes 
 		// i.e. 0.5 degrees per minutes
-		int hour_angle = (60 * h + m);
+		int hour_angle = (60 * h + m)/2;
 		
 		// Minutes hand with respect to '12': A minute hand covers 360 deg in 60 minutes
 		// i.e. 6 degrees per minutes
