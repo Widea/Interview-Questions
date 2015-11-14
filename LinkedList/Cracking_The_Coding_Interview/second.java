@@ -63,7 +63,7 @@ public class second {
 		}
 		
 		// start running the second counter, until the first counter reaches the last node
-		while(first != null) {
+		while(first != null && second.next != null) {
 			second = second.next;
 			first = first.next;
 			}
