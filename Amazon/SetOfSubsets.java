@@ -8,6 +8,24 @@ import java.util.Arrays;
 // The solution should be: {}, {1}, {2}, {3}, {1,2}, {1,3}, {2, 3}, {1, 2, 3}
 
 public class SetOfSubsets {
+	
+	// Another method using bit manipulation
+	static void printSubSets(int[] input) {
+		int length = input.length;
+		int current = (int) (Math.pow(2,length));
+		while(current != 0) {
+			int temp = current;
+			System.out.print("( ");
+			for(int i = 0 ; i < length ; i++) {
+				if((temp & 1 << i) == 0) {
+					System.out.print(input[i]+" ");
+				}
+			}
+			System.out.print("), ");
+			current--;
+		}
+	}
+	
 	static ArrayList<ArrayList<Integer>> subSets(int[] input) {
 		if(input.length == 0)
 			return null;
@@ -37,11 +55,14 @@ public class SetOfSubsets {
 	}
 	
 	public static void main(String[] a) {
-		int[] input = {23, 45, 12};
+		int[] input = {23, 45, 12, 34};
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		System.out.println("\n Method 1 (Bit Manipulation)");
+		printSubSets(input);
+		System.out.println("\n\n Method 2 (Iteration)");
 		result = subSets(input);
 		for(ArrayList<Integer> r : result ) {
-			System.out.println(r.toString());
+			System.out.print(r.toString() + ", ");
 		}
 	}
-	}
+}
