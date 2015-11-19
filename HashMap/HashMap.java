@@ -44,7 +44,7 @@ public class HashMap {
     
     public void resize() {
     	System.out.println("Array is being resized! Reached load factor of " +elemCount +" elements...");    	int newLength = table.length * 2;
-    	
+    	newLength = table.length * 2;
     	HashEntry[] newTable = new HashEntry[newLength];
     	for(int i = 0; i < table.length ; i++) {
     		newTable[i] = table[i];
