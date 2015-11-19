@@ -6,6 +6,9 @@ import java.util.Scanner;
 public class AtoiFunction {
 	
 	static int atoi(String input) {
+		boolean positive = true;
+		if(input.charAt(0) == '-')
+			positive = false;
 		input = input.replaceAll("\\D", "");
 		int result = 0;
 		for(int i = 0 ; i < input.length() ; i++) {
@@ -15,6 +18,10 @@ public class AtoiFunction {
 			if(result <= Integer.MIN_VALUE)
 				return Integer.MIN_VALUE;
 		}
+		
+		if(!positive)
+			return -result;
+		
 		return result;
 	}
 	
