@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /* Cracking the coding interview
- * Chapter : Trees and Graphs
+ * Chapter : Recursion-and-Dynamic-Programming
  * Question: 9.3
  * A magic index in an array A[l...n-l] is defined to be an index such thatA[i] = i. 
  * Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in array A.
