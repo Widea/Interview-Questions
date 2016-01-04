@@ -1,0 +1,65 @@
+/*
+ * Reference: http://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
+ */
+
+boolean isValidSum(Node start, int sum) {
+		Stack<Node> s1 = new Stack<>();
+		Stack<Node> s2 = new Stack<>();
+		
+		Node cur1 = start, cur2 = start;
+		boolean done1 = false, done2 = false;
+		int left = 0, right = 0;
+		
+		while(true) {
+			
+			while(done1 == false) {
+				if(cur1 != null) {
+					s1.push(cur1);
+					cur1 = cur1.left;
+				} else {  
+					if (s1.isEmpty())
+						done1 = true;
+					
+					else {
+						cur1 = s1.pop();
+						left = cur1.data;
+						cur1 = cur1.right;
+						done1 = true;
+					}
+				  }
+			}
+			
+			while (done2 == false) {
+	            if (cur2 != null) {
+	                s2.push(cur2);
+	                cur2 = cur2.right;
+	            } else {
+	                if (s2.isEmpty())
+	                    done2 = true;
+	                else {
+	                    cur2 = s2.pop();
+	                    right = cur2.data;
+	                    cur2 = cur2.left;
+	                    done2 = true;
+	                }
+	            }
+	        }
+	 
+	        // If we find a pair, then print the pair and return. The first
+	        // condition makes sure that two same values are not added
+	        if ((left != right) && (left + right) == sum)
+	        {
+	            System.out.println("Pair found " + left +" : " +right);
+	            return true;
+	        }
+	 
+	        else if ((left + right) < sum)
+	            done1 = false;
+	 
+	        else if ((left + right) > sum)
+	            done2 = false;
+	 
+	        if (left >= right)
+	            return false;
+		}	
+	}
