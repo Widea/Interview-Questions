@@ -14,7 +14,7 @@ public class Solution {
 		int first = 0;
 		int second = 1;
 		
-		for(int i = 0 ; ; i++) {
+		while(true) {
 			int third = first + second;
 			
 			if(third > max)
