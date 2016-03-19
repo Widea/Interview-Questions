@@ -53,5 +53,10 @@ public class FindNonRepeatedNumber {
 	public static void main(String[] a) {
 		System.out.println(findNonRepeatedNumberWithDoubles(new int[] {1,2,3,5,1,3,5,6,6,8,2}));
 		System.out.println(findNonRepeatedNumber(new int[] {1,2,3,3,3,5,1,3,5,6,6,8,8,7,8,9,9,2,2,2,2,2}));
+		System.out.println(findNonRepeatedNumberWithDoubles(new int[] {}));
+		System.out.println(findNonRepeatedNumber(new int[] {}));
+		System.out.println(findNonRepeatedNumber(new int[] {1,2,3,3,3,5,1,3,5,6,6,8,8,7, 7,8,9,9,2,2,2,2,2}));
+		System.out.println(findNonRepeatedNumberWithDoubles(null));
+		System.out.println(findNonRepeatedNumber(null));
 	}
 }
