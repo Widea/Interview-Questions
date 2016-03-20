@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 // Source: Glassdoor
 // Question: Multiply two very long numbers given as strings and print the result. Each number is at most 1000 digits.
 
@@ -13,9 +15,16 @@ public class FindSum {
 				sum[i + j + 1] %= 10;
 			}
 			sum[i] = carry;
-		}
-		
+		}	
 		printSum(sum);
+	}
+	
+	public static void getSum2(String one, String two) {
+		BigInteger b1 = new BigInteger(one);
+		BigInteger b2 = new BigInteger(two);
+		
+		System.out.println((b1.multiply(b2)).toString());
+
 	}
 	
 	public static void printSum(int[] sum) {
@@ -28,6 +37,8 @@ public class FindSum {
 	}
 	
 	public static void main(String[] a) {
-		getSum("999999","99999");
+		getSum("999999999999999999999999999999999999999","999999999999999999999999999999999999999");
+		getSum2("999999999999999999999999999999999999999","999999999999999999999999999999999999999");
+
 	}
 }
