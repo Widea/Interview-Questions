@@ -11,16 +11,19 @@ Source: LeetCode.
 public class PatchingArray
 {
 public int minPatches(int[] nums, int n) {
+	
 	int sum = 1;
 	int i = 0;
 	int count = 0;
 	
 	while(sum <= n){
-		if(i < nums.length && nums[i] <= sum){
+		if(i < nums.length && nums[i] <= sum)
+		{
 			sum+=nums[i];
-      i++;
+      			i++;
 		}
-		else{
+		else
+		{
 			sum += sum;
 			count++;
 		}
